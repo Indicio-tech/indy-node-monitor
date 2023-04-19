@@ -31,7 +31,6 @@ class main(plugin_collection.Plugin):
             warnings = []
             info = []
             entry = {"name": node}
-            entry["network"] = network_name
             try:
                 await self.get_node_addresses(entry, verifiers)
                 jsval = json.loads(val)
@@ -50,11 +49,11 @@ class main(plugin_collection.Plugin):
                 entry["status"]["info"] = len(info)
                 entry["info"] = info
             # Errors / Warnings
-            entry["status"]["errors"] = len(errors)
             if len(errors) > 0:
+                entry["status"]["errors"] = len(errors)
                 entry["errors"] = errors
-            entry["status"]["warnings"] = len(warnings)
             if len(warnings) > 0:
+                entry["status"]["warnings"] = len(warnings)
                 entry["warnings"] = warnings
             # Full Response
             if jsval:
@@ -89,20 +88,13 @@ class main(plugin_collection.Plugin):
     async def get_status_summary(self, jsval: any, errors: list) -> any:
         status = {}
         status["ok"] = (len(errors) <= 0)
-        # Ensure there is always a consistent timestamp
-        # Note: We are not using the timestamp from the node itself for this; result.data.timestamp
-        #  - There could be clock skew on the node which would affect the time series data when
-        #    recorded and graphed.  This would adversely affect the comparison of events across nodes.
-        #  - In the case of a node that is not responding, we would not receive the timestamp
-        #    from the node.
-        #  - The solution is to add a consistent timestamp marking the time the data was collected
-        #    by the monitor.
-        status["timestamp"] = datetime.datetime.now(datetime.timezone.utc).strftime('%s')
         if jsval and ("REPLY" in jsval["op"]):
-            if "timestamp" in jsval["result"]["data"]:
-                status["node_timestamp"] = jsval["result"]["data"]["timestamp"]
             if "Node_info" in jsval["result"]["data"]:
                 status["uptime"] = str(datetime.timedelta(seconds = jsval["result"]["data"]["Node_info"]["Metrics"]["uptime"]))
+            if "timestamp" in jsval["result"]["data"]:
+                status["timestamp"] = jsval["result"]["data"]["timestamp"]
+            else:
+                status["timestamp"] = datetime.datetime.now().strftime('%s')
             if "Software" in jsval["result"]["data"]:
                 status["software"] = {}
                 status["software"]["indy-node"] = jsval["result"]["data"]["Software"]["indy-node"]

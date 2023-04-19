@@ -1,7 +1,0 @@
-asyncio
-pynacl
-gspread
-oauth2client
-fastapi
-uvicorn
-gunicorn
