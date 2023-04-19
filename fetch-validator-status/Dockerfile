@@ -1,10 +1,8 @@
 FROM bcgovimages/von-image:next-1
 
-ADD requirements.txt .
-RUN pip3 install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pynacl gspread oauth2client
 
 ADD networks.json .
 ADD *.py ./
 
-ENTRYPOINT ["bash", "-c", "python main.py $@", "--"]
+ENTRYPOINT ["bash", "-c", "python fetch_status.py $@", "--"]

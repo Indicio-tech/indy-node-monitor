@@ -27,9 +27,7 @@ class main(plugin_collection.Plugin):
         # Filter on alerts
         filtered_result = []
         for item in result:
-            if ("info" in item["status"] and item["status"]["info"] > 0) \
-                or ("warnings" in item["status"] and item["status"]["warnings"] > 0) \
-                or ("errors" in item["status"] and item["status"]["errors"] > 0):
+            if ("info" in item["status"]) or ("warnings" in  item["status"]) or ("errors" in  item["status"]):
                 filtered_result.append(item)
         result = filtered_result
         return result

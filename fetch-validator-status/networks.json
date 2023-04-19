@@ -24,7 +24,7 @@
     "genesisUrl": "http://dev.bcovrin.vonx.io/genesis"
   },
   "bct": {
-    "name": "BCovrin Test",
+    "name": "BCovrin Test ",
     "genesisUrl": "http://test.bcovrin.vonx.io/genesis"
   },
   "bcp": {
@@ -32,35 +32,11 @@
     "genesisUrl": "http://prod.bcovrin.vonx.io/genesis"
   },
   "gld": {
-    "name": "GreenLight Dev Ledger",
+    "name": "GreenLight Dev Ledger ",
     "genesisUrl": "http://dev.greenlight.bcovrin.vonx.io/genesis"
   },
   "gl": {
-    "name": "GreenLight Ledger",
+    "name": "GreenLight Ledger ",
     "genesisUrl": "http://greenlight.bcovrin.vonx.io/genesis"
-  },
-  "imn": {
-    "name": "Indicio MainNet",
-    "genesisUrl": "https://raw.githubusercontent.com/Indicio-tech/indicio-network/main/genesis_files/pool_transactions_mainnet_genesis"
-  },
-  "idn": {
-    "name": "Indicio DemoNet",
-    "genesisUrl": "https://raw.githubusercontent.com/Indicio-tech/indicio-network/main/genesis_files/pool_transactions_demonet_genesis"
-  },
-  "itn": {
-    "name": "Indicio TestNet",
-    "genesisUrl": "https://raw.githubusercontent.com/Indicio-tech/indicio-network/main/genesis_files/pool_transactions_testnet_genesis"
-  },
-  "cdn": {
-    "name": "CANdy Dev Network (CANdy-dev)",
-    "genesisUrl": "https://raw.githubusercontent.com/ICCS-ISAC/dtrust-reconu/main/CANdy/dev/pool_transactions_genesis"
-  },
-  "ctn": {
-    "name": "CANdy Test Network (CANdy-test)",
-    "genesisUrl": "https://raw.githubusercontent.com/ICCS-ISAC/dtrust-reconu/main/CANdy/test/pool_transactions_genesis"
-  },
-  "cpn": {
-    "name": "CANdy Production Network (CANdy-prod)",
-    "genesisUrl": "https://raw.githubusercontent.com/ICCS-ISAC/dtrust-reconu/main/CANdy/prod/pool_transactions_genesis"
   }
 }
